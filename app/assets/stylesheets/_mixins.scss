@@ -1,0 +1,25 @@
+$white: rgb(255, 255, 255);
+$text: rgb(34, 34, 34);
+$lighter-text: rgb(92, 95, 102);
+
+@mixin opacity($val) {
+  opacity: $val;
+
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=$val*100)';
+      filter: alpha(opacity=$val*100);
+}
+
+@mixin user-select {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@mixin position($type, $top, $bottom, $left, $right) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

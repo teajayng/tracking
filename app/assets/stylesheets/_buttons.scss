@@ -1,0 +1,52 @@
+@import 'mixins';
+
+.button {
+  font-size: 16px;
+
+  display: inline-block;
+
+  margin: 0 5px;
+  padding: 7px 17px;
+
+  cursor: pointer;
+  text-align: center;
+  vertical-align: top;
+
+  color: $white;
+  border: none;
+  // border-bottom: 3px solid rgba(0, 0, 0, 0);
+  border-radius: 4px;
+
+  -webkit-appearance: none;
+  @include user-select;
+
+  &.green {
+    transition: background-color 0.225s ease-in-out, border-color 0.225s ease-in-out;
+
+    color: $white;
+    // border-color: rgb(58, 138, 39);
+    background-color: rgb(75, 178, 50);
+
+    &:hover {
+      transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+      // border-color: rgb(38, 90, 25);
+      background-color: rgb(62, 146, 41);
+    }
+  }
+
+  &.red {
+    transition: background-color 0.225s ease-in-out, border-color 0.225s ease-in-out;
+
+    color: $white;
+    // border-color: rgb(150, 22, 36);
+    background-color: rgb(255, 23, 42);
+
+    &:hover {
+      transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+      // border-color: rgb(72, 5, 14);
+      background-color: rgba(151, 3, 9, 1.0);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<span class="tracking-number-content <%= this.tracking_number.get('carrier') %>">
+  <div class="days-to-delivery">
+    <% if (this.tracking_number.get('days_until_delivery') > 0): %>
+    <p class="days-to-delivery-num"><%= this.tracking_number.get('days_until_delivery') %></p>
+    <p class="days-to-delivery-text">Days</p>
+    <% end %>
+  </div>
+
+  <div class="tracking-number-details">
+    <p>
+    <% if (this.tracking_number.get('name') != null): %>
+    <%= this.tracking_number.get('name') %>
+    <% else: %>
+    <%= this.tracking_number.get('number') %>
+    <% end %>
+    </p>
+
+    <p>
+    <% if ($.isEmptyObject(this.tracking_number.get('info'))): %>
+    &nbsp;
+    <% else: %>
+    <% last_event = this.tracking_number.get('info').shipment_events[this.tracking_number.get('info').shipment_events.length - 1] %>
+    <%= last_event.name.capitalize() %>: 
+    <%= last_event.location.city.capitalize() %>, 
+    <%= last_event.location.province %>, 
+    <%= last_event.location.country %>
+    <% end %>
+    </p>
+  </div>
+</span>
+
+<span class="id-num">
+  <%= this.tracking_number.id %>
+</span>
+
+<span class="tracking-number-destroy">
+  <div class="button red">Delete</div>
+</span>
+
+<div class="clearfix"></div>

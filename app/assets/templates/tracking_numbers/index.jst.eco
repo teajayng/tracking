@@ -1,0 +1,7 @@
+<form id="new_number">
+  <input type="text" name="tracking_name" id="new_tracking_name" placeholder="Item Name (optional)" />
+  <input type="text" name="tracking_number" id="new_tracking_number" placeholder="Tracking Number" required />
+  <button class="button green">Add</button>
+</form>
+
+<ul class="list-unstyled tracking-numbers"></ul>

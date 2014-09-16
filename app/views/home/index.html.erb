@@ -1,0 +1,7 @@
+<div id="notice"></div>
+
+<div class="container">
+  <h1>Tracking</h1>
+  <hr />
+  <%= content_tag "div", "Loading..", class: "page", data: {tracking_numbers: TrackingNumber.all} %>
+</div>
