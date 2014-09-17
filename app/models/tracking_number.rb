@@ -26,8 +26,15 @@ class TrackingNumber < ActiveRecord::Base
     end
 
     if tracking_info.instance_of?(ActiveMerchant::Shipping::TrackingResponse)
-      self.days_until_delivery = tracking_info.scheduled_delivery_date.nil? ? '-' : ((tracking_info.scheduled_delivery_date - Time.now.utc)/(24*60*60)).ceil
-      self.last_location = "#{tracking_info.shipment_events.last.location.city},#{tracking_info.shipment_events.last.location.province}"
+      self.days_until_delivery = tracking_info.scheduled_delivery_date.nil? ? 0 : Date.parse(tracking_info.scheduled_delivery_date.to_s).mjd - Date.today.mjd
+      if tracking_info.shipment_events.empty? and self.carrier == "USPS"
+        track_sum = tracking_info.params['TrackResponse']['TrackInfo']['TrackSummary']
+        if track_sum.include? "shipping label"
+          self.last_location = tracking_info.params['TrackResponse']['TrackInfo']['TrackSummary'][/[A-Z|\ ]+\,\ [A-Z]{2}\ [\d]{5}/i].sub(" in ","")
+        end
+      else
+        self.last_location = "#{tracking_info.shipment_events.last.location.city},#{tracking_info.shipment_events.last.location.province}"
+      end
     end
 
     self.info = tracking_info

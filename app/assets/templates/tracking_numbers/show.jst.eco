@@ -6,10 +6,10 @@
   <%= this.tracking_number.get('number') %> [<%= this.tracking_number.get('carrier') %>]
 </h2>
 
-<iframe width="638" height="450" frameborder="0" style="border:0" 
+<!-- <iframe width="638" height="450" frameborder="0" style="border:0" 
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB7Sr3nFRH9A2C8kfTS9-eEntti1rMj-ls
-    &q=<%= this.tracking_number.get('last_location') %>">
-</iframe>
+    &q=<%#= this.tracking_number.get('last_location') %>">
+</iframe> -->
 
 <ul class="list-unstyled shipment-events">
   <%= this.tracking_number.get('info').scheduled_delivery_date %>

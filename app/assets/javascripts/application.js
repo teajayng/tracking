@@ -16,9 +16,12 @@
 //= require backbone
 //= require tracking
 //= require_tree ../templates
-//= require_tree ./helpers
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
+}

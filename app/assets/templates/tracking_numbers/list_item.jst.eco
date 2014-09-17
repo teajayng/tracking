@@ -1,10 +1,16 @@
 <span class="tracking-number-content <%= this.tracking_number.get('carrier') %>">
+  <% if (this.tracking_number.get('days_until_delivery') > 0): %>
   <div class="days-to-delivery">
-    <% if (this.tracking_number.get('days_until_delivery') > 0): %>
     <p class="days-to-delivery-num"><%= this.tracking_number.get('days_until_delivery') %></p>
-    <p class="days-to-delivery-text">Days</p>
+    <p class="days-to-delivery-text">
+    <% if (this.tracking_number.get('days_until_delivery') == 1): %>
+    Day
+    <% else: %>
+    Days
     <% end %>
+    </p>
   </div>
+  <% end %>
 
   <div class="tracking-number-details">
     <p>
@@ -19,11 +25,20 @@
     <% if ($.isEmptyObject(this.tracking_number.get('info'))): %>
     &nbsp;
     <% else: %>
+
+    <% if (this.tracking_number.get('info').shipment_events.length > 0): %>
     <% last_event = this.tracking_number.get('info').shipment_events[this.tracking_number.get('info').shipment_events.length - 1] %>
     <%= last_event.name.capitalize() %>: 
     <%= last_event.location.city.capitalize() %>, 
     <%= last_event.location.province %>, 
     <%= last_event.location.country %>
+    <% else: %>
+    <% if (this.tracking_number.get('carrier') == 'USPS'): %>
+    <% last_event = this.tracking_number.get('last_location') %>
+    Shipping Label Created: <%= last_event %>
+    <% end %>
+    <% end %>
+
     <% end %>
     </p>
   </div>

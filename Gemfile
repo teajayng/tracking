@@ -39,6 +39,7 @@ gem 'thin'
 
 gem 'backbone-on-rails'
 gem 'active_shipping'
+gem 'figaro'
 
 group :development do
   gem 'better_errors'
