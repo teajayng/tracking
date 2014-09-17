@@ -58,6 +58,19 @@ ul {
 
       border-bottom: 1px solid rgba(204, 204, 204, 1.0);
 
+      &:hover {
+        cursor: pointer;
+
+        color: $text;
+        background-color: rgba(7, 106, 153, 0.2);
+
+        .tracking-number-destroy {
+          transition: opacity 0.3s ease-in-out;
+
+          @include opacity(1);
+        }
+      }
+
       .days-to-delivery {
         display: inline-block;
 
@@ -85,6 +98,14 @@ ul {
 
         p {
           margin: 0;
+
+          &.tracking-number-details-primary {
+            font-size: 1.25em;
+          }
+
+          &.tracking-number-details-location {
+            font-size: 0.75em;
+          }
         }
       }
 
@@ -112,13 +133,6 @@ ul {
         background-color: rgba(101, 44, 143, 1.0);
       }
 
-      &:hover {
-        cursor: pointer;
-
-        color: $text;
-        background-color: rgba(7, 106, 153, 0.2);
-      }
-
       .tracking-number-content {
         display: inline-block;
 
@@ -129,6 +143,10 @@ ul {
 
       .tracking-number-destroy {
         float: right;
+
+        transition: opacity 0.225s ease-in-out;
+
+        @include opacity(0);
       }
     }
   }

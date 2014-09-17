@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="tracking-number-details">
-    <p>
+    <p class="tracking-number-details-primary">
     <% if (this.tracking_number.get('name') != null): %>
     <%= this.tracking_number.get('name') %>
     <% else: %>
@@ -21,7 +21,7 @@
     <% end %>
     </p>
 
-    <p>
+    <p class="tracking-number-details-location">
     <% if ($.isEmptyObject(this.tracking_number.get('info'))): %>
     &nbsp;
     <% else: %>
