@@ -8,3 +8,4 @@ This web application allows you to save and organize your tracking numbers. Curr
 * User accounts
 * Amazon?
 * Fix production timezone support
+* Fix mobile view
