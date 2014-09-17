@@ -101,6 +101,9 @@ ul {
 
           &.tracking-number-details-primary {
             font-size: 1.25em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
           &.tracking-number-details-location {
