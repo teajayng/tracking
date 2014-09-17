@@ -57,7 +57,11 @@ ul {
 
       padding: 10px;
 
-      border-bottom: 1px solid rgba(204, 204, 204, 1.0);
+      border-bottom: 2px solid rgba(255, 255, 255, 1.0);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
 
       &:hover {
         cursor: pointer;
