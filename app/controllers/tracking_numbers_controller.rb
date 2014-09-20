@@ -10,14 +10,20 @@ class TrackingNumbersController < ApplicationController
   # GET /tracking_numbers
   # GET /tracking_numbers.json
   def index
-    respond_with TrackingNumber.all
+    @tracking_numbers = TrackingNumber.all
+
+    @tracking_numbers.each do | tracking_number |
+      tracking_number.update_track_info if tracking_number.info.instance_of?(ActiveMerchant::Shipping::TrackingResponse)# and tracking_number.info.status == :delivered
+    end
+
+    respond_with @tracking_numbers
   end
 
   # GET /tracking_numbers/1
   # GET /tracking_numbers/1.json
   def show
     if @tracking_number.info.instance_of?(ActiveMerchant::Shipping::TrackingResponse)# and @tracking_number.carrier != "FedEx"
-      @tracking_number.update_track_info# unless @tracking_number.info.status_description == "DELIVERED"
+      @tracking_number.update_track_info# unless @tracking_number.info.status == :delivered
     end
     respond_with @tracking_number
   end
